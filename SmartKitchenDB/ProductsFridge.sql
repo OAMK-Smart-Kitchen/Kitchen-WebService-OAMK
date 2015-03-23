@@ -10,5 +10,7 @@
     [expirationDate] NCHAR(20) NULL, 
     [available] NCHAR(10) NULL , 
     [kitchenID] INT NOT NULL, 
-    CONSTRAINT [FK_ProductsFridge_ToKitchen] FOREIGN KEY ([kitchenID]) REFERENCES [Kitchen]([Id])
+    [addedBy] INT NULL, 
+    CONSTRAINT [FK_ProductsFridge_ToKitchen] FOREIGN KEY ([kitchenID]) REFERENCES [Kitchen]([Id]), 
+    CONSTRAINT [FK_Product_ToMember] FOREIGN KEY ([addedBy]) REFERENCES [Members]([Id])
 )
