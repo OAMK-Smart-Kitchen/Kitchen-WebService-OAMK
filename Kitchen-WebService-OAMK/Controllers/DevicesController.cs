@@ -14,44 +14,44 @@ using Kitchen_WebService_OAMK.Models;
 
 namespace Kitchen_WebService_OAMK.Controllers
 {
-    public class KitchensController : ApiController
+    public class DevicesController : ApiController
     {
         private Kitchen_WebService_OAMKContext db = new Kitchen_WebService_OAMKContext();
 
-        // GET: api/Kitchens
-        public IQueryable<Kitchen> GetKitchens()
+        // GET: api/Devices
+        public IQueryable<Devices> GetDevices()
         {
-            return db.Kitchens;
+            return db.Devices;
         }
 
-        // GET: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> GetKitchen(int id)
+        // GET: api/Devices/5
+        [ResponseType(typeof(Devices))]
+        public async Task<IHttpActionResult> GetDevices(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            Devices devices = await db.Devices.FindAsync(id);
+            if (devices == null)
             {
                 return NotFound();
             }
 
-            return Ok(kitchen);
+            return Ok(devices);
         }
 
-        // PUT: api/Kitchens/5
+        // PUT: api/Devices/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKitchen(int id, Kitchen kitchen)
+        public async Task<IHttpActionResult> PutDevices(int id, Devices devices)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != kitchen.Id)
+            if (id != devices.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(kitchen).State = EntityState.Modified;
+            db.Entry(devices).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace Kitchen_WebService_OAMK.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KitchenExists(id))
+                if (!DevicesExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace Kitchen_WebService_OAMK.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
+        // POST: api/Devices
+        [ResponseType(typeof(Devices))]
+        public async Task<IHttpActionResult> PostDevices(Devices devices)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Kitchens.Add(kitchen);
+            db.Devices.Add(devices);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            return CreatedAtRoute("DefaultApi", new { id = devices.Id }, devices);
         }
 
-        // DELETE: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> DeleteKitchen(int id)
+        // DELETE: api/Devices/5
+        [ResponseType(typeof(Devices))]
+        public async Task<IHttpActionResult> DeleteDevices(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            Devices devices = await db.Devices.FindAsync(id);
+            if (devices == null)
             {
                 return NotFound();
             }
 
-            db.Kitchens.Remove(kitchen);
+            db.Devices.Remove(devices);
             await db.SaveChangesAsync();
 
-            return Ok(kitchen);
+            return Ok(devices);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace Kitchen_WebService_OAMK.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KitchenExists(int id)
+        private bool DevicesExists(int id)
         {
-            return db.Kitchens.Count(e => e.Id == id) > 0;
+            return db.Devices.Count(e => e.Id == id) > 0;
         }
     }
 }

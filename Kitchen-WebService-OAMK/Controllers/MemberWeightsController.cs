@@ -14,44 +14,44 @@ using Kitchen_WebService_OAMK.Models;
 
 namespace Kitchen_WebService_OAMK.Controllers
 {
-    public class KitchensController : ApiController
+    public class MemberWeightsController : ApiController
     {
         private Kitchen_WebService_OAMKContext db = new Kitchen_WebService_OAMKContext();
 
-        // GET: api/Kitchens
-        public IQueryable<Kitchen> GetKitchens()
+        // GET: api/MemberWeights
+        public IQueryable<MemberWeight> GetMemberWeights()
         {
-            return db.Kitchens;
+            return db.MemberWeights;
         }
 
-        // GET: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> GetKitchen(int id)
+        // GET: api/MemberWeights/5
+        [ResponseType(typeof(MemberWeight))]
+        public async Task<IHttpActionResult> GetMemberWeight(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            MemberWeight memberWeight = await db.MemberWeights.FindAsync(id);
+            if (memberWeight == null)
             {
                 return NotFound();
             }
 
-            return Ok(kitchen);
+            return Ok(memberWeight);
         }
 
-        // PUT: api/Kitchens/5
+        // PUT: api/MemberWeights/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKitchen(int id, Kitchen kitchen)
+        public async Task<IHttpActionResult> PutMemberWeight(int id, MemberWeight memberWeight)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != kitchen.Id)
+            if (id != memberWeight.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(kitchen).State = EntityState.Modified;
+            db.Entry(memberWeight).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace Kitchen_WebService_OAMK.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KitchenExists(id))
+                if (!MemberWeightExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace Kitchen_WebService_OAMK.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
+        // POST: api/MemberWeights
+        [ResponseType(typeof(MemberWeight))]
+        public async Task<IHttpActionResult> PostMemberWeight(MemberWeight memberWeight)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Kitchens.Add(kitchen);
+            db.MemberWeights.Add(memberWeight);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            return CreatedAtRoute("DefaultApi", new { id = memberWeight.Id }, memberWeight);
         }
 
-        // DELETE: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> DeleteKitchen(int id)
+        // DELETE: api/MemberWeights/5
+        [ResponseType(typeof(MemberWeight))]
+        public async Task<IHttpActionResult> DeleteMemberWeight(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            MemberWeight memberWeight = await db.MemberWeights.FindAsync(id);
+            if (memberWeight == null)
             {
                 return NotFound();
             }
 
-            db.Kitchens.Remove(kitchen);
+            db.MemberWeights.Remove(memberWeight);
             await db.SaveChangesAsync();
 
-            return Ok(kitchen);
+            return Ok(memberWeight);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace Kitchen_WebService_OAMK.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KitchenExists(int id)
+        private bool MemberWeightExists(int id)
         {
-            return db.Kitchens.Count(e => e.Id == id) > 0;
+            return db.MemberWeights.Count(e => e.Id == id) > 0;
         }
     }
 }

@@ -14,44 +14,44 @@ using Kitchen_WebService_OAMK.Models;
 
 namespace Kitchen_WebService_OAMK.Controllers
 {
-    public class KitchensController : ApiController
+    public class ExercisesController : ApiController
     {
         private Kitchen_WebService_OAMKContext db = new Kitchen_WebService_OAMKContext();
 
-        // GET: api/Kitchens
-        public IQueryable<Kitchen> GetKitchens()
+        // GET: api/Exercises
+        public IQueryable<Exercises> GetExercises()
         {
-            return db.Kitchens;
+            return db.Exercises;
         }
 
-        // GET: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> GetKitchen(int id)
+        // GET: api/Exercises/5
+        [ResponseType(typeof(Exercises))]
+        public async Task<IHttpActionResult> GetExercises(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            Exercises exercises = await db.Exercises.FindAsync(id);
+            if (exercises == null)
             {
                 return NotFound();
             }
 
-            return Ok(kitchen);
+            return Ok(exercises);
         }
 
-        // PUT: api/Kitchens/5
+        // PUT: api/Exercises/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKitchen(int id, Kitchen kitchen)
+        public async Task<IHttpActionResult> PutExercises(int id, Exercises exercises)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != kitchen.Id)
+            if (id != exercises.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(kitchen).State = EntityState.Modified;
+            db.Entry(exercises).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace Kitchen_WebService_OAMK.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KitchenExists(id))
+                if (!ExercisesExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace Kitchen_WebService_OAMK.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
+        // POST: api/Exercises
+        [ResponseType(typeof(Exercises))]
+        public async Task<IHttpActionResult> PostExercises(Exercises exercises)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Kitchens.Add(kitchen);
+            db.Exercises.Add(exercises);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            return CreatedAtRoute("DefaultApi", new { id = exercises.Id }, exercises);
         }
 
-        // DELETE: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> DeleteKitchen(int id)
+        // DELETE: api/Exercises/5
+        [ResponseType(typeof(Exercises))]
+        public async Task<IHttpActionResult> DeleteExercises(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            Exercises exercises = await db.Exercises.FindAsync(id);
+            if (exercises == null)
             {
                 return NotFound();
             }
 
-            db.Kitchens.Remove(kitchen);
+            db.Exercises.Remove(exercises);
             await db.SaveChangesAsync();
 
-            return Ok(kitchen);
+            return Ok(exercises);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace Kitchen_WebService_OAMK.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KitchenExists(int id)
+        private bool ExercisesExists(int id)
         {
-            return db.Kitchens.Count(e => e.Id == id) > 0;
+            return db.Exercises.Count(e => e.Id == id) > 0;
         }
     }
 }

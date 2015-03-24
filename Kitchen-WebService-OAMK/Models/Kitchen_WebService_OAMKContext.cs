@@ -19,9 +19,23 @@ namespace Kitchen_WebService_OAMK.Models
         {
         }
 
-        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Models.Members> Members { get; set; }
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Kitchen> Kitchens { get; set; }
 
-        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Models.Kitchen> Kitchen { get; set; }
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Devices> Devices { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Exercises> Exercises { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.MemberLength> MemberLengths { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.Members> Members { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.MemberWeight> MemberWeights { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.ProductsFridge> ProductsFridges { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.ShoppingBagProducts> ShoppingBagProducts { get; set; }
+
+        public System.Data.Entity.DbSet<Kitchen_WebService_OAMK.ShoppingBags> ShoppingBags { get; set; }
     
     }
 }

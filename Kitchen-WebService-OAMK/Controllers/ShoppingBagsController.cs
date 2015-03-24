@@ -14,44 +14,44 @@ using Kitchen_WebService_OAMK.Models;
 
 namespace Kitchen_WebService_OAMK.Controllers
 {
-    public class KitchensController : ApiController
+    public class ShoppingBagsController : ApiController
     {
         private Kitchen_WebService_OAMKContext db = new Kitchen_WebService_OAMKContext();
 
-        // GET: api/Kitchens
-        public IQueryable<Kitchen> GetKitchens()
+        // GET: api/ShoppingBags
+        public IQueryable<ShoppingBags> GetShoppingBags()
         {
-            return db.Kitchens;
+            return db.ShoppingBags;
         }
 
-        // GET: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> GetKitchen(int id)
+        // GET: api/ShoppingBags/5
+        [ResponseType(typeof(ShoppingBags))]
+        public async Task<IHttpActionResult> GetShoppingBags(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            ShoppingBags shoppingBags = await db.ShoppingBags.FindAsync(id);
+            if (shoppingBags == null)
             {
                 return NotFound();
             }
 
-            return Ok(kitchen);
+            return Ok(shoppingBags);
         }
 
-        // PUT: api/Kitchens/5
+        // PUT: api/ShoppingBags/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutKitchen(int id, Kitchen kitchen)
+        public async Task<IHttpActionResult> PutShoppingBags(int id, ShoppingBags shoppingBags)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != kitchen.Id)
+            if (id != shoppingBags.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(kitchen).State = EntityState.Modified;
+            db.Entry(shoppingBags).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace Kitchen_WebService_OAMK.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!KitchenExists(id))
+                if (!ShoppingBagsExists(id))
                 {
                     return NotFound();
                 }
@@ -72,35 +72,35 @@ namespace Kitchen_WebService_OAMK.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
+        // POST: api/ShoppingBags
+        [ResponseType(typeof(ShoppingBags))]
+        public async Task<IHttpActionResult> PostShoppingBags(ShoppingBags shoppingBags)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Kitchens.Add(kitchen);
+            db.ShoppingBags.Add(shoppingBags);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            return CreatedAtRoute("DefaultApi", new { id = shoppingBags.Id }, shoppingBags);
         }
 
-        // DELETE: api/Kitchens/5
-        [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> DeleteKitchen(int id)
+        // DELETE: api/ShoppingBags/5
+        [ResponseType(typeof(ShoppingBags))]
+        public async Task<IHttpActionResult> DeleteShoppingBags(int id)
         {
-            Kitchen kitchen = await db.Kitchens.FindAsync(id);
-            if (kitchen == null)
+            ShoppingBags shoppingBags = await db.ShoppingBags.FindAsync(id);
+            if (shoppingBags == null)
             {
                 return NotFound();
             }
 
-            db.Kitchens.Remove(kitchen);
+            db.ShoppingBags.Remove(shoppingBags);
             await db.SaveChangesAsync();
 
-            return Ok(kitchen);
+            return Ok(shoppingBags);
         }
 
         protected override void Dispose(bool disposing)
@@ -112,9 +112,9 @@ namespace Kitchen_WebService_OAMK.Controllers
             base.Dispose(disposing);
         }
 
-        private bool KitchenExists(int id)
+        private bool ShoppingBagsExists(int id)
         {
-            return db.Kitchens.Count(e => e.Id == id) > 0;
+            return db.ShoppingBags.Count(e => e.Id == id) > 0;
         }
     }
 }
