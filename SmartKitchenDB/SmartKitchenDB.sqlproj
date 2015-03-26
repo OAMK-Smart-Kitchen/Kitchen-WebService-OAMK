@@ -61,11 +61,11 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Members.sql" />
-    <Build Include="MemberLength.sql" />
-    <Build Include="MemberWeight.sql" />
-    <Build Include="ProductsFridge.sql" />
+    <Build Include="MemberLengths.sql" />
+    <Build Include="MemberWeights.sql" />
+    <Build Include="ProductsFridges.sql" />
     <Build Include="Devices.sql" />
-    <Build Include="Kitchen.sql" />
+    <Build Include="Kitchens.sql" />
     <Build Include="ShoppingBags.sql" />
     <Build Include="ShoppingBagProducts.sql" />
     <Build Include="Exercises.sql" />
