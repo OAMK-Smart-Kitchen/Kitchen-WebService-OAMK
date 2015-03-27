@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Kitchens] (
     [Id]                INT            IDENTITY (1, 1) NOT NULL,
-    [name]              NVARCHAR (MAX) NULL,
+    [name]              NVARCHAR (MAX) NOT NULL,
     [adminID]           INT            NOT NULL,
     [shoppingBagID]     INT            NULL,
     [temperatureFridge] NVARCHAR (MAX) NULL,

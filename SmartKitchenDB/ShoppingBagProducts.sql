@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ShoppingBagProducts] (
     [Id]              INT            IDENTITY (1, 1) NOT NULL,
-    [name]            NVARCHAR (MAX) NULL,
+    [name]            NVARCHAR (MAX) NOT NULL,
     [quantity]        NVARCHAR (MAX) NULL,
     [category]        NVARCHAR (MAX) NULL,
     [shop]            NVARCHAR (MAX) NULL,

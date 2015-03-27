@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[Members] (
     [Id]              INT            IDENTITY (1, 1) NOT NULL,
-    [firstname]       NVARCHAR (MAX) NULL,
-    [lastname]        NVARCHAR (MAX) NULL,
+    [firstname]       NVARCHAR (MAX) NOT NULL,
+    [lastname]        NVARCHAR (MAX) NOT NULL,
     [dateOfBirth]     INT            NOT NULL,
-    [email]           NVARCHAR (MAX) NULL,
+    [email]           NVARCHAR (MAX) NOT NULL,
     [pictureUrl]      NVARCHAR (MAX) NULL,
     [defaultColor]    NVARCHAR (MAX) NULL,
     [gameActivated]   NVARCHAR (MAX) NULL,

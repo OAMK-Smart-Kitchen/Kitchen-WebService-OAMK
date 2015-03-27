@@ -13,6 +13,9 @@ namespace Kitchen_WebService_OAMK
     // One to Many with Fluent API 
     // http://www.entityframeworktutorial.net/code-first/configure-one-to-many-relationship-in-code-first.aspx
 
+    // Create Models from excisting db
+    // https://www.asp.net/mvc/overview/getting-started/database-first-development/creating-the-web-application
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

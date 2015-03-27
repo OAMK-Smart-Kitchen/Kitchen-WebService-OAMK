@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[MemberLengths] (
     [Id]         INT            IDENTITY (1, 1) NOT NULL,
     [memberID]   INT            NOT NULL,
-    [value]      NVARCHAR (MAX) NULL,
+    [value]      NVARCHAR (MAX) NOT NULL,
     [date]       INT            NOT NULL,
     [Members_Id] INT            NULL,
     CONSTRAINT [PK_dbo.MemberLengths] PRIMARY KEY CLUSTERED ([Id] ASC),

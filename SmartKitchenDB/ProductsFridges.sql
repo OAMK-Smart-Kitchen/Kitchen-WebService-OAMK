@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ProductsFridges] (
     [Id]             INT            IDENTITY (1, 1) NOT NULL,
-    [name]           NVARCHAR (MAX) NULL,
+    [name]           NVARCHAR (MAX) NOT NULL,
     [idNFC]          NVARCHAR (MAX) NULL,
     [category]       NVARCHAR (MAX) NULL,
     [calories]       INT            NULL,
@@ -9,7 +9,7 @@
     [expirationDate] NVARCHAR (MAX) NULL,
     [available]      NVARCHAR (MAX) NULL,
     [kitchenID]      INT            NOT NULL,
-    [addedBy]        INT            NULL,
+    [addedBy]        INT            NOT NULL,
     [Members_Id]     INT            NULL,
     CONSTRAINT [PK_dbo.ProductsFridges] PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_dbo.ProductsFridges_dbo.Kitchens_kitchenID] FOREIGN KEY ([kitchenID]) REFERENCES [dbo].[Kitchens] ([Id]) ON DELETE CASCADE,
