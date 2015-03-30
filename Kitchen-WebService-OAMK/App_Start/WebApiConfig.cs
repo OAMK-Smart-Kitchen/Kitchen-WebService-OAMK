@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Kitchen_WebService_OAMK
 {
@@ -16,11 +17,19 @@ namespace Kitchen_WebService_OAMK
     // Create Models from excisting db
     // https://www.asp.net/mvc/overview/getting-started/database-first-development/creating-the-web-application
 
+    // Enable Cors
+    // http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
+            // Enable Cors
+            var cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(cors); 
+
             // Web API configuration and services
+            config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -30,8 +39,8 @@ namespace Kitchen_WebService_OAMK
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Formatters.Clear();
-            config.Formatters.Add(new JsonMediaTypeFormatter());
+            //config.Formatters.Clear();
+            //config.Formatters.Add(new JsonMediaTypeFormatter());
         }
     }
 }
