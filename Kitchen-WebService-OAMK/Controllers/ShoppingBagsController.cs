@@ -14,6 +14,7 @@ using Kitchen_WebService_OAMK.Models;
 
 namespace Kitchen_WebService_OAMK.Controllers
 {
+    [RoutePrefix("api/ShoppingBags")]
     public class ShoppingBagsController : ApiController
     {
         private Kitchen_WebService_OAMKContext db = new Kitchen_WebService_OAMKContext();
