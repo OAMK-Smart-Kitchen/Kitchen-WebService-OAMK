@@ -1,0 +1,592 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="DevicesSet" EntityType="Model.Store.DevicesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ExercisesSet" EntityType="Model.Store.ExercisesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KitchenSet" EntityType="Model.Store.KitchenSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ShoppingBagsSet" EntityType="Model.Store.ShoppingBagsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ShoppingBagProductsSet" EntityType="Model.Store.ShoppingBagProductsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MembersSet" EntityType="Model.Store.MembersSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberLengthSet" EntityType="Model.Store.MemberLengthSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MemberWeightSet" EntityType="Model.Store.MemberWeightSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductsFridgeSet" EntityType="Model.Store.ProductsFridgeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ShoppingBagsShoppingBagProducts" Association="Model.Store.ShoppingBagsShoppingBagProducts">
+      <End Role="ShoppingBags" EntitySet="ShoppingBagsSet" />
+      <End Role="ShoppingBagProducts" EntitySet="ShoppingBagProductsSet" />
+    </AssociationSet>
+    <AssociationSet Name="KitchenShoppingBags" Association="Model.Store.KitchenShoppingBags">
+      <End Role="Kitchen" EntitySet="KitchenSet" />
+      <End Role="ShoppingBags" EntitySet="ShoppingBagsSet" />
+    </AssociationSet>
+    <AssociationSet Name="KitchenDevices" Association="Model.Store.KitchenDevices">
+      <End Role="Kitchen" EntitySet="KitchenSet" />
+      <End Role="Devices" EntitySet="DevicesSet" />
+    </AssociationSet>
+    <AssociationSet Name="MembersMemberLength" Association="Model.Store.MembersMemberLength">
+      <End Role="Members" EntitySet="MembersSet" />
+      <End Role="MemberLength" EntitySet="MemberLengthSet" />
+    </AssociationSet>
+    <AssociationSet Name="MembersMemberWeight" Association="Model.Store.MembersMemberWeight">
+      <End Role="Members" EntitySet="MembersSet" />
+      <End Role="MemberWeight" EntitySet="MemberWeightSet" />
+    </AssociationSet>
+    <AssociationSet Name="KitchenProductsFridge" Association="Model.Store.KitchenProductsFridge">
+      <End Role="Kitchen" EntitySet="KitchenSet" />
+      <End Role="ProductsFridge" EntitySet="ProductsFridgeSet" />
+    </AssociationSet>
+    <AssociationSet Name="KitchenMembers" Association="Model.Store.KitchenMembers">
+      <End Role="Kitchen" EntitySet="KitchenSet" />
+      <End Role="Members" EntitySet="MembersSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DevicesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kitchen_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ExercisesSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Calories" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Points" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KitchenSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TemperatureFridge" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShoppingBagsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedOn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kitchen_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ShoppingBagProductsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantity" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Shop" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ShoppingBags_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MembersSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Lastname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DateOfBirth" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PictureUrl" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DefaultColor" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Active" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GameActivated" Type="nvarchar(max)" Nullable="true" DefaultValue="True" />
+    <Property Name="GameHealthLevel" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="GamePoints" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Admin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kitchen_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberLengthSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Members_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="MemberWeightSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Members_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProductsFridgeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IdNFC" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Calories" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Quantity" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExpirationDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Available" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kitchen_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="ShoppingBagsShoppingBagProducts">
+    <End Role="ShoppingBags" Type="Model.Store.ShoppingBagsSet" Multiplicity="0..1" />
+    <End Role="ShoppingBagProducts" Type="Model.Store.ShoppingBagProductsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShoppingBags">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShoppingBagProducts">
+        <PropertyRef Name="ShoppingBags_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KitchenShoppingBags">
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="ShoppingBags" Type="Model.Store.ShoppingBagsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitchen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ShoppingBags">
+        <PropertyRef Name="Kitchen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KitchenDevices">
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="Devices" Type="Model.Store.DevicesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitchen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Devices">
+        <PropertyRef Name="Kitchen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MembersMemberLength">
+    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1" />
+    <End Role="MemberLength" Type="Model.Store.MemberLengthSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberLength">
+        <PropertyRef Name="Members_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MembersMemberWeight">
+    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1" />
+    <End Role="MemberWeight" Type="Model.Store.MemberWeightSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Members">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MemberWeight">
+        <PropertyRef Name="Members_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KitchenProductsFridge">
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="ProductsFridge" Type="Model.Store.ProductsFridgeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitchen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductsFridge">
+        <PropertyRef Name="Kitchen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KitchenMembers">
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="1" />
+    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitchen">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Members">
+        <PropertyRef Name="Kitchen_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DevicesSet" EntityType="Model.Devices" />
+          <EntitySet Name="ExercisesSet" EntityType="Model.Exercises" />
+          <EntitySet Name="KitchenSet" EntityType="Model.Kitchen" />
+          <EntitySet Name="ShoppingBagsSet" EntityType="Model.ShoppingBags" />
+          <EntitySet Name="ShoppingBagProductsSet" EntityType="Model.ShoppingBagProducts" />
+          <AssociationSet Name="ShoppingBagsShoppingBagProducts" Association="Model.ShoppingBagsShoppingBagProducts">
+            <End Role="ShoppingBags" EntitySet="ShoppingBagsSet" />
+            <End Role="ShoppingBagProducts" EntitySet="ShoppingBagProductsSet" />
+          </AssociationSet>
+          <AssociationSet Name="KitchenShoppingBags" Association="Model.KitchenShoppingBags">
+            <End Role="Kitchen" EntitySet="KitchenSet" />
+            <End Role="ShoppingBags" EntitySet="ShoppingBagsSet" />
+          </AssociationSet>
+          <AssociationSet Name="KitchenDevices" Association="Model.KitchenDevices">
+            <End Role="Kitchen" EntitySet="KitchenSet" />
+            <End Role="Devices" EntitySet="DevicesSet" />
+          </AssociationSet>
+          <EntitySet Name="MembersSet" EntityType="Model.Members" />
+          <EntitySet Name="MemberLengthSet" EntityType="Model.MemberLength" />
+          <EntitySet Name="MemberWeightSet" EntityType="Model.MemberWeight" />
+          <AssociationSet Name="MembersMemberLength" Association="Model.MembersMemberLength">
+            <End Role="Members" EntitySet="MembersSet" />
+            <End Role="MemberLength" EntitySet="MemberLengthSet" />
+          </AssociationSet>
+          <AssociationSet Name="MembersMemberWeight" Association="Model.MembersMemberWeight">
+            <End Role="Members" EntitySet="MembersSet" />
+            <End Role="MemberWeight" EntitySet="MemberWeightSet" />
+          </AssociationSet>
+          <EntitySet Name="ProductsFridgeSet" EntityType="Model.ProductsFridge" />
+          <AssociationSet Name="KitchenProductsFridge" Association="Model.KitchenProductsFridge">
+            <End Role="Kitchen" EntitySet="KitchenSet" />
+            <End Role="ProductsFridge" EntitySet="ProductsFridgeSet" />
+          </AssociationSet>
+          <AssociationSet Name="KitchenMembers" Association="Model.KitchenMembers">
+            <End Role="Kitchen" EntitySet="KitchenSet" />
+            <End Role="Members" EntitySet="MembersSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kitchen" Relationship="Model.KitchenDevices" FromRole="Devices" ToRole="Kitchen" />
+        </EntityType>
+        <EntityType Name="Exercises">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Calories" Type="String" Nullable="false" />
+          <Property Name="Points" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kitchen">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="TemperatureFridge" Type="String" Nullable="false" />
+          <NavigationProperty Name="ShoppingBags" Relationship="Model.KitchenShoppingBags" FromRole="Kitchen" ToRole="ShoppingBags" />
+          <NavigationProperty Name="Devices" Relationship="Model.KitchenDevices" FromRole="Kitchen" ToRole="Devices" />
+          <NavigationProperty Name="ProductsFridge" Relationship="Model.KitchenProductsFridge" FromRole="Kitchen" ToRole="ProductsFridge" />
+          <NavigationProperty Name="Members" Relationship="Model.KitchenMembers" FromRole="Kitchen" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="ShoppingBags">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="CreatedOn" Type="String" Nullable="false" />
+          <NavigationProperty Name="ShoppingBagProducts" Relationship="Model.ShoppingBagsShoppingBagProducts" FromRole="ShoppingBags" ToRole="ShoppingBagProducts" />
+          <NavigationProperty Name="Kitchen" Relationship="Model.KitchenShoppingBags" FromRole="ShoppingBags" ToRole="Kitchen" />
+        </EntityType>
+        <EntityType Name="ShoppingBagProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Quantity" Type="String" Nullable="true" />
+          <Property Name="Category" Type="String" Nullable="true" />
+          <Property Name="Shop" Type="String" Nullable="true" />
+          <NavigationProperty Name="ShoppingBags" Relationship="Model.ShoppingBagsShoppingBagProducts" FromRole="ShoppingBagProducts" ToRole="ShoppingBags" />
+        </EntityType>
+        <Association Name="ShoppingBagsShoppingBagProducts">
+          <End Type="Model.ShoppingBags" Role="ShoppingBags" Multiplicity="0..1" />
+          <End Type="Model.ShoppingBagProducts" Role="ShoppingBagProducts" Multiplicity="*" />
+        </Association>
+        <Association Name="KitchenShoppingBags">
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.ShoppingBags" Role="ShoppingBags" Multiplicity="*" />
+        </Association>
+        <Association Name="KitchenDevices">
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.Devices" Role="Devices" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Members">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Firstname" Type="String" Nullable="false" />
+          <Property Name="Lastname" Type="String" Nullable="false" />
+          <Property Name="DateOfBirth" Type="String" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="PictureUrl" Type="String" Nullable="true" />
+          <Property Name="DefaultColor" Type="String" Nullable="true" />
+          <Property Name="Active" Type="String" Nullable="true" />
+          <Property Name="GameActivated" Type="String" Nullable="true" DefaultValue="True" />
+          <Property Name="GameHealthLevel" Type="String" Nullable="true" />
+          <Property Name="GamePoints" Type="String" Nullable="true" />
+          <Property Name="Password" Type="String" Nullable="true" />
+          <NavigationProperty Name="MemberLength" Relationship="Model.MembersMemberLength" FromRole="Members" ToRole="MemberLength" />
+          <NavigationProperty Name="MemberWeight" Relationship="Model.MembersMemberWeight" FromRole="Members" ToRole="MemberWeight" />
+          <Property Name="Admin" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kitchen" Relationship="Model.KitchenMembers" FromRole="Members" ToRole="Kitchen" />
+        </EntityType>
+        <EntityType Name="MemberLength">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="Model.MembersMemberLength" FromRole="MemberLength" ToRole="Members" />
+        </EntityType>
+        <EntityType Name="MemberWeight">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" Nullable="false" />
+          <Property Name="Date" Type="String" Nullable="false" />
+          <NavigationProperty Name="Members" Relationship="Model.MembersMemberWeight" FromRole="MemberWeight" ToRole="Members" />
+        </EntityType>
+        <Association Name="MembersMemberLength">
+          <End Type="Model.Members" Role="Members" Multiplicity="0..1" />
+          <End Type="Model.MemberLength" Role="MemberLength" Multiplicity="*" />
+        </Association>
+        <Association Name="MembersMemberWeight">
+          <End Type="Model.Members" Role="Members" Multiplicity="0..1" />
+          <End Type="Model.MemberWeight" Role="MemberWeight" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ProductsFridge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="IdNFC" Type="String" Nullable="true" />
+          <Property Name="Category" Type="String" Nullable="true" />
+          <Property Name="Calories" Type="String" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Quantity" Type="String" Nullable="true" />
+          <Property Name="ExpirationDate" Type="String" Nullable="false" />
+          <Property Name="Available" Type="String" Nullable="false" />
+          <NavigationProperty Name="Kitchen" Relationship="Model.KitchenProductsFridge" FromRole="ProductsFridge" ToRole="Kitchen" />
+        </EntityType>
+        <Association Name="KitchenProductsFridge">
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.ProductsFridge" Role="ProductsFridge" Multiplicity="*" />
+        </Association>
+        <Association Name="KitchenMembers">
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="1" />
+          <End Type="Model.Members" Role="Members" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="ModelContainer">
+    <EntitySetMapping Name="DevicesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Devices)">
+        <MappingFragment StoreEntitySet="DevicesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExercisesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Exercises)">
+        <MappingFragment StoreEntitySet="ExercisesSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KitchenSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Kitchen)">
+        <MappingFragment StoreEntitySet="KitchenSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TemperatureFridge" ColumnName="TemperatureFridge" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShoppingBagsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ShoppingBags)">
+        <MappingFragment StoreEntitySet="ShoppingBagsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShoppingBagProductsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ShoppingBagProducts)">
+        <MappingFragment StoreEntitySet="ShoppingBagProductsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Shop" ColumnName="Shop" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MembersSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.Members)">
+        <MappingFragment StoreEntitySet="MembersSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PictureUrl" ColumnName="PictureUrl" />
+          <ScalarProperty Name="DefaultColor" ColumnName="DefaultColor" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="GameActivated" ColumnName="GameActivated" />
+          <ScalarProperty Name="GameHealthLevel" ColumnName="GameHealthLevel" />
+          <ScalarProperty Name="GamePoints" ColumnName="GamePoints" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberLengthSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.MemberLength)">
+        <MappingFragment StoreEntitySet="MemberLengthSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MemberWeightSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.MemberWeight)">
+        <MappingFragment StoreEntitySet="MemberWeightSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductsFridgeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model.ProductsFridge)">
+        <MappingFragment StoreEntitySet="ProductsFridgeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdNFC" ColumnName="IdNFC" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Calories" ColumnName="Calories" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="Available" ColumnName="Available" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ShoppingBagsShoppingBagProducts" TypeName="Model.ShoppingBagsShoppingBagProducts" StoreEntitySet="ShoppingBagProductsSet">
+      <EndProperty Name="ShoppingBags">
+        <ScalarProperty Name="Id" ColumnName="ShoppingBags_Id" />
+      </EndProperty>
+      <EndProperty Name="ShoppingBagProducts">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="ShoppingBags_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KitchenShoppingBags" TypeName="Model.KitchenShoppingBags" StoreEntitySet="ShoppingBagsSet">
+      <EndProperty Name="Kitchen">
+        <ScalarProperty Name="Id" ColumnName="Kitchen_Id" />
+      </EndProperty>
+      <EndProperty Name="ShoppingBags">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Kitchen_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KitchenDevices" TypeName="Model.KitchenDevices" StoreEntitySet="DevicesSet">
+      <EndProperty Name="Kitchen">
+        <ScalarProperty Name="Id" ColumnName="Kitchen_Id" />
+      </EndProperty>
+      <EndProperty Name="Devices">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Kitchen_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MembersMemberLength" TypeName="Model.MembersMemberLength" StoreEntitySet="MemberLengthSet">
+      <EndProperty Name="Members">
+        <ScalarProperty Name="Id" ColumnName="Members_Id" />
+      </EndProperty>
+      <EndProperty Name="MemberLength">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Members_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MembersMemberWeight" TypeName="Model.MembersMemberWeight" StoreEntitySet="MemberWeightSet">
+      <EndProperty Name="Members">
+        <ScalarProperty Name="Id" ColumnName="Members_Id" />
+      </EndProperty>
+      <EndProperty Name="MemberWeight">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Members_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KitchenProductsFridge" TypeName="Model.KitchenProductsFridge" StoreEntitySet="ProductsFridgeSet">
+      <EndProperty Name="Kitchen">
+        <ScalarProperty Name="Id" ColumnName="Kitchen_Id" />
+      </EndProperty>
+      <EndProperty Name="ProductsFridge">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Kitchen_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KitchenMembers" TypeName="Model.KitchenMembers" StoreEntitySet="MembersSet">
+      <EndProperty Name="Kitchen">
+        <ScalarProperty Name="Id" ColumnName="Kitchen_Id" />
+      </EndProperty>
+      <EndProperty Name="Members">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
