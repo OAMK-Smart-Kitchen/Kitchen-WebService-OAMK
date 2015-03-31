@@ -47,6 +47,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -92,14 +93,6 @@
       <LastGenOutput>Model.cs</LastGenOutput>
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <Content Include="Models\ModelGen.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelGen.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\ModelGen.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelGen.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -108,22 +101,26 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Devices.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Exercises.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kitchen.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MemberLength.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Members.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MemberWeight.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -140,24 +137,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelGen.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelGen.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ModelGen.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelGen.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\ProductsFridge.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShoppingBagProducts.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShoppingBags.cs">
-      <DependentUpon>ModelGen.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

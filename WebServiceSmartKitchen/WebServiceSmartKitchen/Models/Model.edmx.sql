@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/31/2015 17:01:11
--- Generated from EDMX file: C:\Projects\WebServiceSmartKitchen\WebServiceSmartKitchen\Models\Model.edmx
+-- Date Created: 03/31/2015 18:04:58
+-- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\WebServiceSmartKitchen\Models\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,59 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ShoppingBagsShoppingBagProducts]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ShoppingBagProductsSet] DROP CONSTRAINT [FK_ShoppingBagsShoppingBagProducts];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KitchenShoppingBags]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ShoppingBagsSet] DROP CONSTRAINT [FK_KitchenShoppingBags];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KitchenDevices]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[DevicesSet] DROP CONSTRAINT [FK_KitchenDevices];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MembersMemberLength]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MemberLengthSet] DROP CONSTRAINT [FK_MembersMemberLength];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MembersMemberWeight]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MemberWeightSet] DROP CONSTRAINT [FK_MembersMemberWeight];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KitchenProductsFridge]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ProductsFridgeSet] DROP CONSTRAINT [FK_KitchenProductsFridge];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KitchenMembers]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MembersSet] DROP CONSTRAINT [FK_KitchenMembers];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[DevicesSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[DevicesSet];
+GO
+IF OBJECT_ID(N'[dbo].[ExercisesSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ExercisesSet];
+GO
+IF OBJECT_ID(N'[dbo].[KitchenSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KitchenSet];
+GO
+IF OBJECT_ID(N'[dbo].[ShoppingBagsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ShoppingBagsSet];
+GO
+IF OBJECT_ID(N'[dbo].[ShoppingBagProductsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ShoppingBagProductsSet];
+GO
+IF OBJECT_ID(N'[dbo].[MembersSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MembersSet];
+GO
+IF OBJECT_ID(N'[dbo].[MemberLengthSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MemberLengthSet];
+GO
+IF OBJECT_ID(N'[dbo].[MemberWeightSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MemberWeightSet];
+GO
+IF OBJECT_ID(N'[dbo].[ProductsFridgeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ProductsFridgeSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
