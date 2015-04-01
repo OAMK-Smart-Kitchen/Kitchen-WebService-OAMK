@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/31/2015 18:04:58
--- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\WebServiceSmartKitchen\Models\Model.edmx
+-- Date Created: 04/01/2015 15:19:18
+-- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\Models\Model.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -240,7 +240,7 @@ ADD CONSTRAINT [FK_ShoppingBagsShoppingBagProducts]
     FOREIGN KEY ([ShoppingBags_Id])
     REFERENCES [dbo].[ShoppingBagsSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_ShoppingBagsShoppingBagProducts'
@@ -255,7 +255,7 @@ ADD CONSTRAINT [FK_KitchenShoppingBags]
     FOREIGN KEY ([Kitchen_Id])
     REFERENCES [dbo].[KitchenSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KitchenShoppingBags'
@@ -270,7 +270,7 @@ ADD CONSTRAINT [FK_KitchenDevices]
     FOREIGN KEY ([Kitchen_Id])
     REFERENCES [dbo].[KitchenSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KitchenDevices'
@@ -285,7 +285,7 @@ ADD CONSTRAINT [FK_MembersMemberLength]
     FOREIGN KEY ([Members_Id])
     REFERENCES [dbo].[MembersSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_MembersMemberLength'
@@ -300,7 +300,7 @@ ADD CONSTRAINT [FK_MembersMemberWeight]
     FOREIGN KEY ([Members_Id])
     REFERENCES [dbo].[MembersSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_MembersMemberWeight'
@@ -315,7 +315,7 @@ ADD CONSTRAINT [FK_KitchenProductsFridge]
     FOREIGN KEY ([Kitchen_Id])
     REFERENCES [dbo].[KitchenSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KitchenProductsFridge'
@@ -330,7 +330,7 @@ ADD CONSTRAINT [FK_KitchenMembers]
     FOREIGN KEY ([Kitchen_Id])
     REFERENCES [dbo].[KitchenSet]
         ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
+    ON DELETE CASCADE ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KitchenMembers'

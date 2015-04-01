@@ -142,7 +142,9 @@
     <Property Name="Kitchen_Id" Type="int" Nullable="true" />
   </EntityType>
   <Association Name="ShoppingBagsShoppingBagProducts">
-    <End Role="ShoppingBags" Type="Model.Store.ShoppingBagsSet" Multiplicity="0..1" />
+    <End Role="ShoppingBags" Type="Model.Store.ShoppingBagsSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ShoppingBagProducts" Type="Model.Store.ShoppingBagProductsSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ShoppingBags">
@@ -154,7 +156,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="KitchenShoppingBags">
-    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ShoppingBags" Type="Model.Store.ShoppingBagsSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kitchen">
@@ -166,7 +170,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="KitchenDevices">
-    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Devices" Type="Model.Store.DevicesSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kitchen">
@@ -178,7 +184,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="MembersMemberLength">
-    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1" />
+    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MemberLength" Type="Model.Store.MemberLengthSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Members">
@@ -190,7 +198,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="MembersMemberWeight">
-    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1" />
+    <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MemberWeight" Type="Model.Store.MemberWeightSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Members">
@@ -202,7 +212,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="KitchenProductsFridge">
-    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1" />
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ProductsFridge" Type="Model.Store.ProductsFridgeSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kitchen">
@@ -214,7 +226,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="KitchenMembers">
-    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="1" />
+    <End Role="Kitchen" Type="Model.Store.KitchenSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Members" Type="Model.Store.MembersSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Kitchen">
@@ -319,15 +333,21 @@
           <NavigationProperty Name="ShoppingBags" Relationship="Model.ShoppingBagsShoppingBagProducts" FromRole="ShoppingBagProducts" ToRole="ShoppingBags" />
         </EntityType>
         <Association Name="ShoppingBagsShoppingBagProducts">
-          <End Type="Model.ShoppingBags" Role="ShoppingBags" Multiplicity="0..1" />
+          <End Type="Model.ShoppingBags" Role="ShoppingBags" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.ShoppingBagProducts" Role="ShoppingBagProducts" Multiplicity="*" />
         </Association>
         <Association Name="KitchenShoppingBags">
-          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.ShoppingBags" Role="ShoppingBags" Multiplicity="*" />
         </Association>
         <Association Name="KitchenDevices">
-          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Devices" Role="Devices" Multiplicity="*" />
         </Association>
         <EntityType Name="Members">
@@ -370,11 +390,15 @@
           <NavigationProperty Name="Members" Relationship="Model.MembersMemberWeight" FromRole="MemberWeight" ToRole="Members" />
         </EntityType>
         <Association Name="MembersMemberLength">
-          <End Type="Model.Members" Role="Members" Multiplicity="0..1" />
+          <End Type="Model.Members" Role="Members" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.MemberLength" Role="MemberLength" Multiplicity="*" />
         </Association>
         <Association Name="MembersMemberWeight">
-          <End Type="Model.Members" Role="Members" Multiplicity="0..1" />
+          <End Type="Model.Members" Role="Members" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.MemberWeight" Role="MemberWeight" Multiplicity="*" />
         </Association>
         <EntityType Name="ProductsFridge">
@@ -393,11 +417,15 @@
           <NavigationProperty Name="Kitchen" Relationship="Model.KitchenProductsFridge" FromRole="ProductsFridge" ToRole="Kitchen" />
         </EntityType>
         <Association Name="KitchenProductsFridge">
-          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" />
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.ProductsFridge" Role="ProductsFridge" Multiplicity="*" />
         </Association>
         <Association Name="KitchenMembers">
-          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="1" />
+          <End Type="Model.Kitchen" Role="Kitchen" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="Model.Members" Role="Members" Multiplicity="*" />
         </Association>
       </Schema>
