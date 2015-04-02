@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{299177E7-4FE8-4773-ABC6-A4A110A807AB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebServiceSmartKitchen</RootNamespace>
+    <AssemblyName>WebServiceSmartKitchen</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="ModelContainer-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=h2416288.stratoserver.net%3bInitial Catalog=SmartKitchenDBv2%3bPersist Security Info=True%3bUser ID=Bernd%3bPassword=rcMnc!TI8!bR95nLz%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\ModelContainer-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Global.asax" />
+    <Content Include="homepage_data\css\font-awesome.min.css" />
+    <Content Include="homepage_data\css\ie\backgroundsize.min.htc" />
+    <Content Include="homepage_data\css\ie\html5shiv.js" />
+    <Content Include="homepage_data\css\ie\PIE.htc" />
+    <Content Include="homepage_data\css\ie\v8.css" />
+    <Content Include="homepage_data\css\ie\v9.css" />
+    <Content Include="homepage_data\css\images\overlay1.png" />
+    <Content Include="homepage_data\css\images\overlay2.png" />
+    <Content Include="homepage_data\css\images\overlay3.svg" />
+    <Content Include="homepage_data\css\images\overlay4.svg" />
+    <Content Include="homepage_data\css\skel.css" />
+    <Content Include="homepage_data\css\style-large.css" />
+    <Content Include="homepage_data\css\style-medium.css" />
+    <Content Include="homepage_data\css\style-small.css" />
+    <Content Include="homepage_data\css\style-xlarge.css" />
+    <Content Include="homepage_data\css\style-xsmall.css" />
+    <Content Include="homepage_data\css\style-xxsmall.css" />
+    <Content Include="homepage_data\css\style.css" />
+    <Content Include="homepage_data\fonts\fontawesome-webfont.svg" />
+    <Content Include="homepage_data\images\Belgium.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-144x144.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-192x192.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-36x36.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-48x48.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-72x72.png" />
+    <Content Include="homepage_data\images\favicons\android-chrome-96x96.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-114x114.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-120x120.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-144x144.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-152x152.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-180x180.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-57x57.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-60x60.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-72x72.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-76x76.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon-precomposed.png" />
+    <Content Include="homepage_data\images\favicons\apple-touch-icon.png" />
+    <Content Include="homepage_data\images\favicons\browserconfig.xml" />
+    <Content Include="homepage_data\images\favicons\favicon-16x16.png" />
+    <Content Include="homepage_data\images\favicons\favicon-194x194.png" />
+    <Content Include="homepage_data\images\favicons\favicon-32x32.png" />
+    <Content Include="homepage_data\images\favicons\favicon-96x96.png" />
+    <Content Include="homepage_data\images\favicons\favicon.ico" />
+    <Content Include="homepage_data\images\favicons\mstile-144x144.png" />
+    <Content Include="homepage_data\images\favicons\mstile-150x150.png" />
+    <Content Include="homepage_data\images\favicons\mstile-310x150.png" />
+    <Content Include="homepage_data\images\favicons\mstile-310x310.png" />
+    <Content Include="homepage_data\images\favicons\mstile-70x70.png" />
+    <Content Include="homepage_data\images\Finland.png" />
+    <Content Include="homepage_data\images\header.jpg" />
+    <Content Include="homepage_data\images\pic01.jpg" />
+    <Content Include="homepage_data\images\pic02.jpg" />
+    <Content Include="homepage_data\images\pic03.jpg" />
+    <Content Include="homepage_data\images\pic04.jpg" />
+    <Content Include="homepage_data\images\pic05.jpg" />
+    <Content Include="homepage_data\images\pic06.jpg" />
+    <Content Include="homepage_data\js\init.js" />
+    <Content Include="homepage_data\js\jquery.min.js" />
+    <Content Include="homepage_data\js\jquery.scrolly.min.js" />
+    <Content Include="homepage_data\js\skel.min.js" />
+    <Content Include="index.html" />
+    <Content Include="Models\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Model.edmx.sql" />
+    <Content Include="Models\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DevicesController.cs" />
+    <Compile Include="Controllers\ExercisesController.cs" />
+    <Compile Include="Controllers\KitchensController.cs" />
+    <Compile Include="Controllers\MemberLengthsController.cs" />
+    <Compile Include="Controllers\MembersController.cs" />
+    <Compile Include="Controllers\MemberWeightsController.cs" />
+    <Compile Include="Controllers\ProductsFridgesController.cs" />
+    <Compile Include="Controllers\ShoppingBagProductsController.cs" />
+    <Compile Include="Controllers\ShoppingBagsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Devices.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Exercises.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kitchen.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberLength.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Members.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MemberWeight.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsFridge.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingBagProducts.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShoppingBags.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <EntityDeploy Include="Models\Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="homepage_data\fonts\fontawesome-webfont.eot" />
+    <Content Include="homepage_data\fonts\fontawesome-webfont.ttf" />
+    <Content Include="homepage_data\fonts\fontawesome-webfont.woff" />
+    <Content Include="homepage_data\fonts\fontawesome-webfont.woff2" />
+    <Content Include="homepage_data\fonts\FontAwesome.otf" />
+    <Content Include="homepage_data\images\favicons\manifest.json" />
+    <Content Include="homepage_data\images\favicons\Thumbs.db" />
+    <Content Include="homepage_data\sass\ie\v8.scss" />
+    <Content Include="homepage_data\sass\ie\v9.scss" />
+    <Content Include="homepage_data\sass\style-large.scss" />
+    <Content Include="homepage_data\sass\style-medium.scss" />
+    <Content Include="homepage_data\sass\style-small.scss" />
+    <Content Include="homepage_data\sass\style-xlarge.scss" />
+    <Content Include="homepage_data\sass\style-xsmall.scss" />
+    <Content Include="homepage_data\sass\style-xxsmall.scss" />
+    <Content Include="homepage_data\sass\style.scss" />
+    <Content Include="homepage_data\sass\_mixins.scss" />
+    <Content Include="homepage_data\sass\_vars.scss" />
+    <None Include="Properties\PublishProfiles\StratoServer.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63706</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:63666/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
