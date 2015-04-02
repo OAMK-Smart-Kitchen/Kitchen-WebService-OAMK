@@ -218,7 +218,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ModelEntities.cs" />
     <Compile Include="Models\ProductsFridge.cs">
       <SubType>Code</SubType>
       <DependentUpon>Model.tt</DependentUpon>

@@ -23,6 +23,8 @@ namespace WebServiceSmartKitchen.Models
         {
         }
 
+        // To override SaveChanges
+        // http://devillers.nl/improving-dbentityvalidationexception/
         public override async Task<int> SaveChangesAsync()
         {
             try
