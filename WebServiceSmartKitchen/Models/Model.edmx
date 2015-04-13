@@ -67,7 +67,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="TemperatureFridge" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TemperatureFridge" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="ShoppingBagsSet">
     <Key>
@@ -305,7 +305,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="TemperatureFridge" Type="String" Nullable="false" />
+          <Property Name="TemperatureFridge" Type="String" Nullable="true" />
           <NavigationProperty Name="ShoppingBags" Relationship="Model.KitchenShoppingBags" FromRole="Kitchen" ToRole="ShoppingBags" />
           <NavigationProperty Name="Devices" Relationship="Model.KitchenDevices" FromRole="Kitchen" ToRole="Devices" />
           <NavigationProperty Name="ProductsFridge" Relationship="Model.KitchenProductsFridge" FromRole="Kitchen" ToRole="ProductsFridge" />
@@ -358,7 +358,7 @@
           <Property Name="Firstname" Type="String" Nullable="false" />
           <Property Name="Lastname" Type="String" Nullable="false" />
           <Property Name="DateOfBirth" Type="String" Nullable="true" />
-          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" cg:SetterAccess="Public" />
           <Property Name="PictureUrl" Type="String" Nullable="true" />
           <Property Name="DefaultColor" Type="String" Nullable="true" />
           <Property Name="Active" Type="String" Nullable="true" />

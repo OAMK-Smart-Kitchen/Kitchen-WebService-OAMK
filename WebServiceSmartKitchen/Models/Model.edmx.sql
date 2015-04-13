@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/01/2015 15:19:18
+-- Date Created: 04/13/2015 09:36:29
 -- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\Models\Model.edmx
 -- --------------------------------------------------
 
@@ -96,7 +96,7 @@ GO
 CREATE TABLE [dbo].[KitchenSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [TemperatureFridge] nvarchar(max)  NOT NULL
+    [TemperatureFridge] nvarchar(max)  NULL
 );
 GO
 
