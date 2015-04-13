@@ -10,12 +10,48 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebServiceSmartKitchen.Models;
+using WebServiceSmartKitchen.ViewModels;
 
 namespace WebServiceSmartKitchen.Controllers
 {
     public class KitchensController : ApiController
     {
         private ModelContainer db = new ModelContainer();
+
+        // POST: api/Kitchens/Login
+        [ActionName("Login")]
+        [ResponseType(typeof(Kitchen))]
+        public async Task<IHttpActionResult> PostLogin(KitchenLogin login)
+        {
+            try
+            {
+                // Members member = await db.MembersSet.FindAsync(login.Email); //Only keys can send, use other method function.
+                IEnumerable<Members> memberSearch = from search in db.MembersSet
+                                                    where search.Email == login.Email
+                                                    select search;
+                Members member = new Members();
+                member = memberSearch.FirstOrDefault();
+                if (member == null)
+                {
+                    return NotFound();
+                }
+                else if (member.Password == login.Password)
+                {
+                    Kitchen kitchen = await db.KitchenSet.FindAsync(member.Kitchen.Id);
+                    return Ok(kitchen);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            catch (Exception e)
+            {
+                return ResponseMessage(Request.CreateResponse(HttpStatusCode.NotFound, e.Message));
+            }
+
+        }
+
 
         // GET: api/Kitchens
         public IQueryable<Kitchen> GetKitchenSet()
@@ -71,7 +107,8 @@ namespace WebServiceSmartKitchen.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens
+        // POST: api/Kitchens/Register
+        [ActionName("Register")]
         [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
         {

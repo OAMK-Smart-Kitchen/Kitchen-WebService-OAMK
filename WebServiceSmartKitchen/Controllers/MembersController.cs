@@ -72,6 +72,7 @@ namespace WebServiceSmartKitchen.Controllers
         }
 
         // POST: api/Members
+        [ActionName("Register")]
         [ResponseType(typeof(Members))]
         public async Task<IHttpActionResult> PostMembers(Members members)
         {
