@@ -101,11 +101,11 @@
     <Property Name="PictureUrl" Type="nvarchar(max)" Nullable="true" />
     <Property Name="DefaultColor" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Active" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="GameActivated" Type="nvarchar(max)" Nullable="true" DefaultValue="True" />
+    <Property Name="GameActivated" Type="nvarchar(max)" Nullable="true" DefaultValue="true" />
     <Property Name="GameHealthLevel" Type="nvarchar(max)" Nullable="true" />
     <Property Name="GamePoints" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Admin" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Admin" Type="nvarchar(max)" Nullable="false" DefaultValue="false" />
     <Property Name="Kitchen_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MemberLengthSet">
@@ -362,13 +362,13 @@
           <Property Name="PictureUrl" Type="String" Nullable="true" />
           <Property Name="DefaultColor" Type="String" Nullable="true" />
           <Property Name="Active" Type="String" Nullable="true" />
-          <Property Name="GameActivated" Type="String" Nullable="true" DefaultValue="True" />
+          <Property Name="GameActivated" Type="String" Nullable="true" DefaultValue="true" />
           <Property Name="GameHealthLevel" Type="String" Nullable="true" />
           <Property Name="GamePoints" Type="String" Nullable="true" />
           <Property Name="Password" Type="String" Nullable="true" />
           <NavigationProperty Name="MemberLength" Relationship="Model.MembersMemberLength" FromRole="Members" ToRole="MemberLength" />
           <NavigationProperty Name="MemberWeight" Relationship="Model.MembersMemberWeight" FromRole="Members" ToRole="MemberWeight" />
-          <Property Name="Admin" Type="String" Nullable="false" />
+          <Property Name="Admin" Type="String" Nullable="false" DefaultValue="false" />
           <NavigationProperty Name="Kitchen" Relationship="Model.KitchenMembers" FromRole="Members" ToRole="Kitchen" />
         </EntityType>
         <EntityType Name="MemberLength">

@@ -16,7 +16,8 @@ namespace WebServiceSmartKitchen.Models
     {
         public Members()
         {
-            this.GameActivated = "True";
+            this.GameActivated = "true";
+            this.Admin = "false";
             this.MemberLength = new HashSet<MemberLength>();
             this.MemberWeight = new HashSet<MemberWeight>();
         }
