@@ -110,17 +110,28 @@ namespace WebServiceSmartKitchen.Controllers
         // POST: api/Kitchens/Register
         [ActionName("Register")]
         [ResponseType(typeof(Kitchen))]
-        public async Task<IHttpActionResult> PostKitchen(Kitchen kitchen)
+        public async Task<IHttpActionResult> PostKitchen(KitchenRegister register)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
+            Kitchen kitchen = new Kitchen();
+            Members addMember = new Members();
+            kitchen.Name = register.KitchenName;
+            addMember.Active = register.Active;
+            addMember.Admin = register.Admin;
+            addMember.DateOfBirth = register.DateOfBirth;
+            addMember.Email = register.Email;
+            addMember.Firstname = register.Firstname;
+            addMember.Lastname = register.Lastname;
+            addMember.Password = register.Password;
+            kitchen.Members.Add(addMember);
             db.KitchenSet.Add(kitchen);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            //return CreatedAtRoute("DefaultApi", new { id = kitchen.Id }, kitchen);
+            return Ok(kitchen);
         }
 
         // DELETE: api/Kitchens/5
