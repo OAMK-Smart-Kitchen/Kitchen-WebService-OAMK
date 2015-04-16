@@ -116,6 +116,13 @@ namespace WebServiceSmartKitchen.Controllers
             {
                 return BadRequest(ModelState);
             }
+            IEnumerable<Members> memberSearchExist = from search in db.MembersSet
+                                                where search.Email == register.Email
+                                                select search;
+            if (memberSearchExist.Any())
+            {
+                return Conflict();
+            }
             Kitchen kitchen = new Kitchen();
             Members addMember = new Members();
             kitchen.Name = register.KitchenName;
