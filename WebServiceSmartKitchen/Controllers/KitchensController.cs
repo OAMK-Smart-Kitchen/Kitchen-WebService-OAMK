@@ -18,7 +18,7 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // POST: api/Kitchens/Login
+        // POST: service/Kitchens/Login
         [ActionName("Login")]
         [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> PostLogin(KitchenLogin login)
@@ -53,13 +53,13 @@ namespace WebServiceSmartKitchen.Controllers
         }
 
 
-        // GET: api/Kitchens
+        // GET: service/Kitchens
         public IQueryable<Kitchen> GetKitchenSet()
         {
             return db.KitchenSet;
         }
 
-        // GET: api/Kitchens/5
+        // GET: service/Kitchens/5
         [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> GetKitchen(int id)
         {
@@ -72,8 +72,9 @@ namespace WebServiceSmartKitchen.Controllers
             return Ok(kitchen);
         }
 
-        // PUT: api/Kitchens/5
-        [ResponseType(typeof(void))]
+        // PUT: service/Kitchens/5
+        
+        [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> PutKitchen(int id, Kitchen kitchen)
         {
             if (!ModelState.IsValid)
@@ -91,6 +92,7 @@ namespace WebServiceSmartKitchen.Controllers
             try
             {
                 await db.SaveChangesAsync();
+                return Ok(kitchen);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -107,7 +109,7 @@ namespace WebServiceSmartKitchen.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Kitchens/Register
+        // POST: service/Kitchens/Register
         [ActionName("Register")]
         [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> PostKitchen(KitchenRegister register)
@@ -141,7 +143,37 @@ namespace WebServiceSmartKitchen.Controllers
             return Ok(kitchen);
         }
 
-        // DELETE: api/Kitchens/5
+        // POST: service/Kitchen/Member/{id}
+        [ActionName("Member")]
+        [ResponseType(typeof(Kitchen))]
+        public async Task<IHttpActionResult> PostMember(int id, Members member)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            
+            IEnumerable<Members> memberSearchExist = from search in db.MembersSet
+                                                     where search.Email == member.Email
+                                                     select search;
+            if (memberSearchExist.Any())
+            {
+                return Conflict();
+            }
+
+            Kitchen kitchen = await db.KitchenSet.FindAsync(id);
+            if (kitchen == null)
+            {
+                return NotFound();
+            }
+            kitchen.Members.Add(member);
+            db.KitchenSet.Attach(kitchen);
+            await db.SaveChangesAsync();
+
+            return Ok(kitchen);
+        }
+
+        // DELETE: service/Kitchens/5
         [ResponseType(typeof(Kitchen))]
         public async Task<IHttpActionResult> DeleteKitchen(int id)
         {

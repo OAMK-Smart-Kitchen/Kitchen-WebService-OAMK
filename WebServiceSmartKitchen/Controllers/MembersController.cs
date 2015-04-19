@@ -17,13 +17,13 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: api/Members
+        // GET: service/Members
         public IQueryable<Members> GetMembersSet()
         {
             return db.MembersSet;
         }
 
-        // GET: api/Members/5
+        // GET: service/Members/5
         [ResponseType(typeof(Members))]
         public async Task<IHttpActionResult> GetMembers(int id)
         {
@@ -36,7 +36,7 @@ namespace WebServiceSmartKitchen.Controllers
             return Ok(members);
         }
 
-        // PUT: api/Members/5
+        // PUT: service/Members/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutMembers(int id, Members members)
         {
@@ -71,8 +71,8 @@ namespace WebServiceSmartKitchen.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Members
-        [ActionName("Register")]
+        // POST: service/Kitchen/AddMember
+        [ActionName("AddMember")]
         [ResponseType(typeof(Members))]
         public async Task<IHttpActionResult> PostMembers(Members members)
         {
@@ -87,7 +87,7 @@ namespace WebServiceSmartKitchen.Controllers
             return CreatedAtRoute("DefaultApi", new { id = members.Id }, members);
         }
 
-        // DELETE: api/Members/5
+        // DELETE: service/Members/5
         [ResponseType(typeof(Members))]
         public async Task<IHttpActionResult> DeleteMembers(int id)
         {
