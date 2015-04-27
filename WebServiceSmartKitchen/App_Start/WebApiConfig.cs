@@ -42,6 +42,13 @@ namespace WebServiceSmartKitchen
             );
 
             config.Routes.MapHttpRoute(
+                name: "EditMember",
+                routeTemplate: "service/Member/{id}",
+                defaults: new { controller = "Members", action = "Update", id = RouteParameter.Optional },
+                constraints: null
+                );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebServiceSmartKitchen.Models;
+using WebServiceSmartKitchen.ViewModels;
 
 namespace WebServiceSmartKitchen.Controllers
 {
@@ -36,21 +37,39 @@ namespace WebServiceSmartKitchen.Controllers
             return Ok(members);
         }
 
-        // PUT: service/Members/5
+        // PUT: service/Member/5
+        [ActionName("Update")]
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMembers(int id, Members members)
+        public async Task<IHttpActionResult> PutMembers(int id, MemberUpdate member)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != members.Id)
+            if (id != member.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(members).State = System.Data.Entity.EntityState.Modified;
+            IEnumerable<Members> memberSearchExist = from search in db.MembersSet
+                                                     where search.Id == member.Id
+                                                      select search;
+            if (!memberSearchExist.Any())
+            {
+                return Conflict();
+            }
+
+            Members memberChanged = memberSearchExist.FirstOrDefault();
+            memberChanged.Firstname = member.Firstname;
+            memberChanged.Lastname = member.Lastname;
+            memberChanged.DateOfBirth = member.DateOfBirth;
+            memberChanged.DefaultColor = member.DefaultColor;
+            memberChanged.Email = member.Email;
+            memberChanged.GameActivated = member.GameActivated;
+            memberChanged.Active = member.Active;
+
+            db.Entry(memberChanged).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
