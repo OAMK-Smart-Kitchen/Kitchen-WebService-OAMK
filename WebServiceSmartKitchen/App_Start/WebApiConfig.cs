@@ -21,6 +21,13 @@ namespace WebServiceSmartKitchen
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "EditMember",
+                routeTemplate: "service/Member/Profile/{id}",
+                defaults: new { controller = "Members", action = "Update", id = RouteParameter.Optional },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "LoginToKitchen",
                 routeTemplate: "service/Kitchen/Login",
                 defaults: new { controller = "Kitchens", action = "Login" },
@@ -40,13 +47,6 @@ namespace WebServiceSmartKitchen
                 defaults: new { controller = "Kitchens", action = "Member", id = RouteParameter.Optional },
                 constraints: null
             );
-
-            config.Routes.MapHttpRoute(
-                name: "EditMember",
-                routeTemplate: "service/Member/{id}",
-                defaults: new { controller = "Members", action = "Update", id = RouteParameter.Optional },
-                constraints: null
-                );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

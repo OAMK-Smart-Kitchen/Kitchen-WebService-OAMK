@@ -40,6 +40,7 @@
         </ObjectGroup>
       </Objects>
     </PublishDatabaseSettings>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

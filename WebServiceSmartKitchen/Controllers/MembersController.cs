@@ -24,7 +24,7 @@ namespace WebServiceSmartKitchen.Controllers
             return db.MembersSet;
         }
 
-        // GET: service/Members/5
+        // GET: service/Members/Profile/5
         [ResponseType(typeof(Members))]
         public async Task<IHttpActionResult> GetMembers(int id)
         {
@@ -47,32 +47,27 @@ namespace WebServiceSmartKitchen.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (id != member.Id)
-            {
-                return BadRequest();
-            }
-
             IEnumerable<Members> memberSearchExist = from search in db.MembersSet
-                                                     where search.Id == member.Id
-                                                      select search;
+                                                     where search.Id == id 
+                                                     select search;
             if (!memberSearchExist.Any())
             {
                 return Conflict();
             }
 
-            Members memberChanged = memberSearchExist.FirstOrDefault();
-            memberChanged.Firstname = member.Firstname;
-            memberChanged.Lastname = member.Lastname;
-            memberChanged.DateOfBirth = member.DateOfBirth;
-            memberChanged.DefaultColor = member.DefaultColor;
-            memberChanged.Email = member.Email;
-            memberChanged.GameActivated = member.GameActivated;
-            memberChanged.Active = member.Active;
-
-            db.Entry(memberChanged).State = System.Data.Entity.EntityState.Modified;
-
             try
             {
+                Members memberChanged = memberSearchExist.FirstOrDefault();
+                memberChanged.Firstname = member.Firstname;
+                memberChanged.Lastname = member.Lastname;
+                memberChanged.DateOfBirth = member.DateOfBirth;
+                memberChanged.DefaultColor = member.DefaultColor;
+                memberChanged.Email = member.Email;
+                memberChanged.GameActivated = member.GameActivated;
+                memberChanged.Active = member.Active;
+
+                db.Entry(memberChanged).State = System.Data.Entity.EntityState.Modified;
+
                 await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
