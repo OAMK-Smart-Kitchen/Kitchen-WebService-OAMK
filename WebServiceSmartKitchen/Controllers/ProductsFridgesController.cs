@@ -18,12 +18,14 @@ namespace WebServiceSmartKitchen.Controllers
         private ModelContainer db = new ModelContainer();
 
         // GET: api/ProductsFridges
+        [ActionName("Getproducts")]
         public IQueryable<ProductsFridge> GetProductsFridgeSet()
         {
             return db.ProductsFridgeSet;
         }
 
         // GET: api/ProductsFridges/5
+        [ActionName("Getproduct")]
         [ResponseType(typeof(ProductsFridge))]
         public async Task<IHttpActionResult> GetProductsFridge(int id)
         {
@@ -72,18 +74,27 @@ namespace WebServiceSmartKitchen.Controllers
         }
 
         // POST: api/ProductsFridges
+        [ActionName("Addproduct")]
         [ResponseType(typeof(ProductsFridge))]
-        public async Task<IHttpActionResult> PostProductsFridge(ProductsFridge productsFridge)
+        public async Task<IHttpActionResult> PostProductsFridge(int id, ProductsFridge productsFridge)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.ProductsFridgeSet.Add(productsFridge);
+            Kitchen kitchen = await db.KitchenSet.FindAsync(id);
+            if (kitchen == null)
+            {
+                return NotFound();
+            }
+            kitchen.ProductsFridge.Add(productsFridge);
+            db.KitchenSet.Attach(kitchen);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = productsFridge.Id }, productsFridge);
+            return Ok(kitchen);
+            
+            //return CreatedAtRoute("DefaultApi", new { id = productsFridge.Id }, productsFridge);
         }
 
         // DELETE: api/ProductsFridges/5

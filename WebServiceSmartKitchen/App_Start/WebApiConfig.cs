@@ -48,6 +48,27 @@ namespace WebServiceSmartKitchen
                 constraints: null
             );
 
+            //config.Routes.MapHttpRoute(
+              //  name: "GetFridgeProduct",
+               // routeTemplate: "service/Fridge/Product/{id}",
+                //defaults: new { controller = "ProductsFridges", action = "Getproduct", id = RouteParameter.Optional },
+                //constraints: null
+            //);
+
+            config.Routes.MapHttpRoute(
+                name: "SendFridgeProduct",
+                routeTemplate: "service/Fridge/Product/{id}",
+                defaults: new { controller = "ProductsFridges", action = "Addproduct", id = RouteParameter.Optional },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "AllFridgeProducts",
+                routeTemplate: "service/Fridge/Products",
+                defaults: new { controller = "ProductsFridges", action = "Getproducts" },
+                constraints: null
+            );
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
