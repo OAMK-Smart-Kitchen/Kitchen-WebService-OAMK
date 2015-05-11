@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using WebServiceSmartKitchen.Models;
+using WebServiceSmartKitchen.ViewModels;
 
 namespace WebServiceSmartKitchen.Controllers
 {
@@ -17,7 +18,8 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: api/ProductsFridges
+        // GET: service/Hardware/Products
+        // GET: service/Fridge/Products
         [ActionName("Getproducts")]
         public IQueryable<ProductsFridge> GetProductsFridgeSet()
         {
@@ -25,7 +27,6 @@ namespace WebServiceSmartKitchen.Controllers
         }
 
         // GET: api/ProductsFridges/5
-        [ActionName("Getproduct")]
         [ResponseType(typeof(ProductsFridge))]
         public async Task<IHttpActionResult> GetProductsFridge(int id)
         {
@@ -38,7 +39,8 @@ namespace WebServiceSmartKitchen.Controllers
             return Ok(productsFridge);
         }
 
-        // PUT: api/ProductsFridges/5
+        // PUT: service/ProductsFridges/5
+        [ActionName("Editproduct")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProductsFridge(int id, ProductsFridge productsFridge)
         {
@@ -52,7 +54,24 @@ namespace WebServiceSmartKitchen.Controllers
                 return BadRequest();
             }
 
-            db.Entry(productsFridge).State = System.Data.Entity.EntityState.Modified;
+            IEnumerable<ProductsFridge> productFridgeSearchExist = from search in db.ProductsFridgeSet
+                                                                   where search.Id == id
+                                                                   select search;
+            if (!productFridgeSearchExist.Any())
+            {
+                return Conflict();
+            }
+            ProductsFridge productEdit = new ProductsFridge();
+            productEdit = productFridgeSearchExist.FirstOrDefault();
+            productEdit.Calories = productsFridge.Calories;
+            productEdit.ExpirationDate = productsFridge.ExpirationDate;
+            productEdit.Name = productsFridge.Name;
+            productEdit.Quantity = productsFridge.Quantity;
+            productEdit.Category = productsFridge.Category;
+            productEdit.Available = productsFridge.Available;
+
+
+            db.Entry(productEdit).State = System.Data.Entity.EntityState.Modified;
 
             try
             {
@@ -68,6 +87,41 @@ namespace WebServiceSmartKitchen.Controllers
                 {
                     throw;
                 }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
+        // PUT: service/Hardware/Product
+        [ActionName("NFCproduct")]
+        [ResponseType(typeof(void))]
+        public async Task<IHttpActionResult> PutProductsFridge1(FridgeProductsNfc product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            IEnumerable<ProductsFridge> productFridgeSearchExist = from search in db.ProductsFridgeSet
+                                                     where search.IdNFC == product.IdNFC
+                                                     select search;
+            if (!productFridgeSearchExist.Any())
+            {
+                return Conflict();
+            }
+            ProductsFridge productEdit = new ProductsFridge();
+            productEdit = productFridgeSearchExist.FirstOrDefault();
+            productEdit.Address = product.Address;
+            productEdit.Available = product.Available;
+
+            db.Entry(productEdit).State = System.Data.Entity.EntityState.Modified;
+
+            try
+            {
+                await db.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                   return NotFound();
             }
 
             return StatusCode(HttpStatusCode.NoContent);

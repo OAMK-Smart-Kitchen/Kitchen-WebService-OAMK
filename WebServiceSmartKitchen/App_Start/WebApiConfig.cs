@@ -48,13 +48,6 @@ namespace WebServiceSmartKitchen
                 constraints: null
             );
 
-            //config.Routes.MapHttpRoute(
-              //  name: "GetFridgeProduct",
-               // routeTemplate: "service/Fridge/Product/{id}",
-                //defaults: new { controller = "ProductsFridges", action = "Getproduct", id = RouteParameter.Optional },
-                //constraints: null
-            //);
-
             config.Routes.MapHttpRoute(
                 name: "SendFridgeProduct",
                 routeTemplate: "service/Fridge/Product/{id}",
@@ -63,9 +56,30 @@ namespace WebServiceSmartKitchen
             );
 
             config.Routes.MapHttpRoute(
+                name: "EditFridgeProduct",
+                routeTemplate: "service/Fridge/Product/Edit/{id}",
+                defaults: new { controller = "ProductsFridges", action = "Editproduct", id = RouteParameter.Optional },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "AllFridgeProducts",
                 routeTemplate: "service/Fridge/Products",
                 defaults: new { controller = "ProductsFridges", action = "Getproducts" },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "AllFridgeProductsforHardware",
+                routeTemplate: "service/Hardware/Products",
+                defaults: new { controller = "ProductsFridges", action = "Getproducts" },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "PutFridgeProduct",
+                routeTemplate: "service/Hardware/Product",
+                defaults: new { controller = "ProductsFridges", action = "NFCproduct" },
                 constraints: null
             );
 
