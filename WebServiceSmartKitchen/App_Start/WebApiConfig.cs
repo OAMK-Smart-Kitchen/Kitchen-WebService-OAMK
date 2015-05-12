@@ -12,7 +12,6 @@ namespace WebServiceSmartKitchen
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            var corsAttr = new EnableCorsAttribute("http://app.verhofstadt.eu, http://localhost:14844", "*", "*"); //Delete localhost when release
             config.EnableCors(corsAttr);
             // Web API JSON enabled
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
