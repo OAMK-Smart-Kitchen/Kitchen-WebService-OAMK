@@ -64,15 +64,15 @@ namespace WebServiceSmartKitchen
 
             config.Routes.MapHttpRoute(
                 name: "AllFridgeProducts",
-                routeTemplate: "service/Fridge/Products",
-                defaults: new { controller = "ProductsFridges", action = "Getproducts" },
+                routeTemplate: "service/Fridge/Products/{id}",
+                defaults: new { controller = "ProductsFridges", action = "Getproducts", id = RouteParameter.Optional },
                 constraints: null
             );
 
             config.Routes.MapHttpRoute(
                 name: "AllFridgeProductsforHardware",
-                routeTemplate: "service/Hardware/Products",
-                defaults: new { controller = "ProductsFridges", action = "Getproducts" },
+                routeTemplate: "service/Hardware/Products/{id}",
+                defaults: new { controller = "ProductsFridges", action = "Getproducts", id = RouteParameter.Optional },
                 constraints: null
             );
 

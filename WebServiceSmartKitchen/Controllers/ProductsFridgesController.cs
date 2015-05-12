@@ -18,28 +18,30 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: service/Hardware/Products
-        // GET: service/Fridge/Products
-        [ActionName("Getproducts")]
+        // GET: service/ProductsFridges
         public IQueryable<ProductsFridge> GetProductsFridgeSet()
         {
             return db.ProductsFridgeSet;
         }
 
-        // GET: api/ProductsFridges/5
+        // GET: service/Hardware/Products/5
+        // GET: service/Fridge/Products/5
+        [ActionName("Getproducts")]
         [ResponseType(typeof(ProductsFridge))]
         public async Task<IHttpActionResult> GetProductsFridge(int id)
         {
-            ProductsFridge productsFridge = await db.ProductsFridgeSet.FindAsync(id);
-            if (productsFridge == null)
+            IEnumerable<ProductsFridge> productFridgeSearchExist = from search in db.ProductsFridgeSet
+                                                                   where search.Kitchen.Id == id
+                                                                   select search;
+            if (!productFridgeSearchExist.Any())
             {
                 return NotFound();
             }
 
-            return Ok(productsFridge);
+            return Ok(productFridgeSearchExist);
         }
 
-        // PUT: service/ProductsFridges/5
+        // PUT: service/Fridge/Product/Edit/5
         [ActionName("Editproduct")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutProductsFridge(int id, ProductsFridge productsFridge)
