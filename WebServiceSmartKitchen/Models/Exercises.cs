@@ -18,5 +18,9 @@ namespace WebServiceSmartKitchen.Models
         public string Name { get; set; }
         public string Calories { get; set; }
         public string Points { get; set; }
+        public string Url { get; set; }
+        public string Duration { get; set; }
+        public string StartSeconds { get; set; }
+        public string StopSeconds { get; set; }
     }
 }

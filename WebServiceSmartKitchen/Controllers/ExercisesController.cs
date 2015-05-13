@@ -18,6 +18,7 @@ namespace WebServiceSmartKitchen.Controllers
         private ModelContainer db = new ModelContainer();
 
         // GET: api/Exercises
+        [ActionName("GetExercises")]
         public IQueryable<Exercises> GetExercisesSet()
         {
             return db.ExercisesSet;

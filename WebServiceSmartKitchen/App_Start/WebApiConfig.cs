@@ -12,7 +12,7 @@ namespace WebServiceSmartKitchen
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            var corsAttr = new EnableCorsAttribute("http://app.verhofstadt.eu", "*", "*"); //http://localhost:14844 Delete localhost when release
+            var corsAttr = new EnableCorsAttribute("http://app.verhofstadt.eu", "*", "*"); //http://localhost:14844 http://app.verhofstadt.eu Delete localhost when release
             config.EnableCors(corsAttr);
             // Web API JSON enabled
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
@@ -80,6 +80,13 @@ namespace WebServiceSmartKitchen
                 name: "PutFridgeProduct",
                 routeTemplate: "service/Hardware/Product",
                 defaults: new { controller = "ProductsFridges", action = "NFCproduct" },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "GetExercises",
+                routeTemplate: "service/Exercises",
+                defaults: new { controller = "Exercises", action = "GetExercises" },
                 constraints: null
             );
 

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/14/2015 08:43:22
+-- Date Created: 05/13/2015 09:18:22
 -- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\Models\Model.edmx
 -- --------------------------------------------------
 
@@ -88,7 +88,11 @@ CREATE TABLE [dbo].[ExercisesSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [Calories] nvarchar(max)  NOT NULL,
-    [Points] nvarchar(max)  NOT NULL
+    [Points] nvarchar(max)  NOT NULL,
+    [Url] nvarchar(max)  NOT NULL,
+    [Duration] nvarchar(max)  NOT NULL,
+    [StartSeconds] nvarchar(max)  NOT NULL,
+    [StopSeconds] nvarchar(max)  NOT NULL
 );
 GO
 

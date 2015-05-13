@@ -60,6 +60,10 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Calories" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Points" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Url" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Duration" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartSeconds" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StopSeconds" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="KitchenSet">
     <Key>
@@ -298,6 +302,10 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Calories" Type="String" Nullable="false" />
           <Property Name="Points" Type="String" Nullable="false" />
+          <Property Name="Url" Type="String" Nullable="false" />
+          <Property Name="Duration" Type="String" Nullable="false" />
+          <Property Name="StartSeconds" Type="String" Nullable="false" />
+          <Property Name="StopSeconds" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="Kitchen">
           <Key>
@@ -449,6 +457,10 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Calories" ColumnName="Calories" />
           <ScalarProperty Name="Points" ColumnName="Points" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="StartSeconds" ColumnName="StartSeconds" />
+          <ScalarProperty Name="StopSeconds" ColumnName="StopSeconds" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
