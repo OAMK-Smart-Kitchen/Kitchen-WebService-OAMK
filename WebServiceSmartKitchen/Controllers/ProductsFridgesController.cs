@@ -115,6 +115,7 @@ namespace WebServiceSmartKitchen.Controllers
             productEdit = productFridgeSearchExist.FirstOrDefault();
             productEdit.Address = product.Address;
             productEdit.Available = product.Available;
+            productEdit.Kitchen.TemperatureFridge = product.TemperatureFridge;
             toHardware.Calories = productEdit.Calories;
 
             db.Entry(productEdit).State = System.Data.Entity.EntityState.Modified;

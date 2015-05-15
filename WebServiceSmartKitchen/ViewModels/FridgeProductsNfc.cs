@@ -10,5 +10,6 @@ namespace WebServiceSmartKitchen.ViewModels
         public string IdNFC { get; set; }
         public string Address { get; set; }
         public string Available { get; set; }
+        public string TemperatureFridge { get; set; }
     }
 }
