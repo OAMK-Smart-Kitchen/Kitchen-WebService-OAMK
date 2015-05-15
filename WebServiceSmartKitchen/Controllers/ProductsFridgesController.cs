@@ -110,10 +110,12 @@ namespace WebServiceSmartKitchen.Controllers
             {
                 return Conflict();
             }
+            HardwareReturn toHardware = new HardwareReturn();
             ProductsFridge productEdit = new ProductsFridge();
             productEdit = productFridgeSearchExist.FirstOrDefault();
             productEdit.Address = product.Address;
             productEdit.Available = product.Available;
+            toHardware.Calories = productEdit.Calories;
 
             db.Entry(productEdit).State = System.Data.Entity.EntityState.Modified;
 
@@ -126,7 +128,7 @@ namespace WebServiceSmartKitchen.Controllers
                    return NotFound();
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(toHardware);
         }
 
         // POST: api/ProductsFridges
