@@ -17,73 +17,35 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: api/MemberWeights
-        public IQueryable<MemberWeight> GetMemberWeightSet()
+        // POST: service/Member/Weight/5
+        [ActionName("AddMemberWeight")]
+        public async Task<IHttpActionResult> PostMemberWeight(int id, MemberWeight memberWeight)
         {
-            return db.MemberWeightSet;
-        }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-        // GET: api/MemberWeights/5
-        [ResponseType(typeof(MemberWeight))]
-        public async Task<IHttpActionResult> GetMemberWeight(int id)
-        {
-            MemberWeight memberWeight = await db.MemberWeightSet.FindAsync(id);
-            if (memberWeight == null)
+            try
+            {
+                Members member = await db.MembersSet.FindAsync(id);
+                
+                if (member == null)
+                {
+                    return NotFound();
+                }
+
+                member.MemberWeight.Add(memberWeight);
+                db.MembersSet.Attach(member);
+                await db.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException)
             {
                 return NotFound();
             }
 
-            return Ok(memberWeight);
-        }
-
-        // PUT: api/MemberWeights/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMemberWeight(int id, MemberWeight memberWeight)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != memberWeight.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(memberWeight).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MemberWeightExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/MemberWeights
-        [ResponseType(typeof(MemberWeight))]
-        public async Task<IHttpActionResult> PostMemberWeight(MemberWeight memberWeight)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.MemberWeightSet.Add(memberWeight);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = memberWeight.Id }, memberWeight);
         }
 
         // DELETE: api/MemberWeights/5

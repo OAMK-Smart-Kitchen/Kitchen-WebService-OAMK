@@ -17,73 +17,36 @@ namespace WebServiceSmartKitchen.Controllers
     {
         private ModelContainer db = new ModelContainer();
 
-        // GET: api/MemberLengths
-        public IQueryable<MemberLength> GetMemberLengthSet()
-        {
-            return db.MemberLengthSet;
-        }
-
-        // GET: api/MemberLengths/5
+        // POST: service/Member/Length/5
+        [ActionName("AddMemberLength")]
         [ResponseType(typeof(MemberLength))]
-        public async Task<IHttpActionResult> GetMemberLength(int id)
+        public async Task<IHttpActionResult> PostMemberLength(int id, MemberLength memberLength)
         {
-            MemberLength memberLength = await db.MemberLengthSet.FindAsync(id);
-            if (memberLength == null)
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                Members member = await db.MembersSet.FindAsync(id);
+
+                if (member == null)
+                {
+                    return NotFound();
+                }
+
+                member.MemberLength.Add(memberLength);
+                db.MembersSet.Attach(member);
+                await db.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException)
             {
                 return NotFound();
             }
 
-            return Ok(memberLength);
-        }
-
-        // PUT: api/MemberLengths/5
-        [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutMemberLength(int id, MemberLength memberLength)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != memberLength.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(memberLength).State = System.Data.Entity.EntityState.Modified;
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MemberLengthExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
             return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/MemberLengths
-        [ResponseType(typeof(MemberLength))]
-        public async Task<IHttpActionResult> PostMemberLength(MemberLength memberLength)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.MemberLengthSet.Add(memberLength);
-            await db.SaveChangesAsync();
-
-            return CreatedAtRoute("DefaultApi", new { id = memberLength.Id }, memberLength);
         }
 
         // DELETE: api/MemberLengths/5

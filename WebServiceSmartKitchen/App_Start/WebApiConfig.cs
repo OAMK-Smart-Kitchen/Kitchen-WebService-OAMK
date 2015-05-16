@@ -91,6 +91,20 @@ namespace WebServiceSmartKitchen
             );
 
             config.Routes.MapHttpRoute(
+                name: "AddMemberLength",
+                routeTemplate: "service/Member/Length/{id}",
+                defaults: new {controller = "MemberLengths", action = "AddMemberLength", id = RouteParameter.Optional},
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "AddMemberWeight",
+                routeTemplate: "service/Member/Weight/{id}",
+                defaults: new { controller = "MemberWeights", action = "AddMemberWeight", id = RouteParameter.Optional },
+                constraints: null
+            );
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
