@@ -64,6 +64,7 @@ namespace WebServiceSmartKitchen.Controllers
                 memberChanged.DefaultColor = member.DefaultColor;
                 memberChanged.Email = member.Email;
                 memberChanged.GameActivated = member.GameActivated;
+                memberChanged.GamePoints = member.GamePoints;
                 memberChanged.Active = member.Active;
 
                 db.Entry(memberChanged).State = System.Data.Entity.EntityState.Modified;

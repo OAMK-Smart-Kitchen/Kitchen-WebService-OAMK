@@ -15,5 +15,6 @@ namespace WebServiceSmartKitchen.ViewModels
         public string Active { get; set; }
         public string GameActivated { get; set; }
         public string DefaultColor { get; set; }
+        public string GamePoints { get; set; }
     }
 }
