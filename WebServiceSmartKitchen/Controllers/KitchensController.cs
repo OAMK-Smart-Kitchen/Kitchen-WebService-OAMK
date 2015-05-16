@@ -135,6 +135,7 @@ namespace WebServiceSmartKitchen.Controllers
             addMember.Firstname = register.Firstname;
             addMember.Lastname = register.Lastname;
             addMember.Password = register.Password;
+            addMember.GamePoints = "100";
             kitchen.Members.Add(addMember);
             db.KitchenSet.Add(kitchen);
             await db.SaveChangesAsync();
@@ -166,6 +167,7 @@ namespace WebServiceSmartKitchen.Controllers
             {
                 return NotFound();
             }
+            member.GamePoints = "100";
             kitchen.Members.Add(member);
             db.KitchenSet.Attach(kitchen);
             await db.SaveChangesAsync();
