@@ -135,6 +135,8 @@ namespace WebServiceSmartKitchen.Controllers
             addMember.Firstname = register.Firstname;
             addMember.Lastname = register.Lastname;
             addMember.Password = register.Password;
+            addMember.Gender = register.Gender;
+            addMember.AgeCategory = register.AgeCategory;
             addMember.GamePoints = "100";
             kitchen.Members.Add(addMember);
             db.KitchenSet.Add(kitchen);

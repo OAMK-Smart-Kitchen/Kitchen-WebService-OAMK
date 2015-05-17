@@ -66,6 +66,8 @@ namespace WebServiceSmartKitchen.Controllers
                 memberChanged.GameActivated = member.GameActivated;
                 memberChanged.GamePoints = member.GamePoints;
                 memberChanged.Active = member.Active;
+                memberChanged.Gender = member.Gender;
+                memberChanged.AgeCategory = member.AgeCategory;
 
                 db.Entry(memberChanged).State = System.Data.Entity.EntityState.Modified;
 

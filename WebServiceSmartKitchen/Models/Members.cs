@@ -35,6 +35,8 @@ namespace WebServiceSmartKitchen.Models
         public string GamePoints { get; set; }
         public string Password { get; set; }
         public string Admin { get; set; }
+        public string Gender { get; set; }
+        public string AgeCategory { get; set; }
     
         public virtual ICollection<MemberLength> MemberLength { get; set; }
         public virtual ICollection<MemberWeight> MemberWeight { get; set; }

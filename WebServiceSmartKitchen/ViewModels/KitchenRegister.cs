@@ -16,5 +16,7 @@ namespace WebServiceSmartKitchen.ViewModels
         public string Password { get; set; }
         public string Active { get; set; }
         public string Admin { get; set; }
+        public string Gender { get; set; }
+        public string AgeCategory { get; set; }
     }
 }

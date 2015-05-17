@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/13/2015 09:18:22
+-- Date Created: 05/17/2015 10:49:15
 -- Generated from EDMX file: C:\Users\Bernd\Documents\GitHub\Kitchen-WebService-OAMK\WebServiceSmartKitchen\Models\Model.edmx
 -- --------------------------------------------------
 
@@ -139,6 +139,8 @@ CREATE TABLE [dbo].[MembersSet] (
     [GamePoints] nvarchar(max)  NULL,
     [Password] nvarchar(max)  NULL,
     [Admin] nvarchar(max)  NOT NULL,
+    [Gender] nvarchar(max)  NOT NULL,
+    [AgeCategory] nvarchar(max)  NOT NULL,
     [Kitchen_Id] int  NOT NULL
 );
 GO

@@ -110,6 +110,8 @@
     <Property Name="GamePoints" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Admin" Type="nvarchar(max)" Nullable="false" DefaultValue="false" />
+    <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AgeCategory" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Kitchen_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="MemberLengthSet">
@@ -378,6 +380,8 @@
           <NavigationProperty Name="MemberWeight" Relationship="Model.MembersMemberWeight" FromRole="Members" ToRole="MemberWeight" />
           <Property Name="Admin" Type="String" Nullable="false" DefaultValue="false" />
           <NavigationProperty Name="Kitchen" Relationship="Model.KitchenMembers" FromRole="Members" ToRole="Kitchen" />
+          <Property Name="Gender" Type="String" Nullable="false" />
+          <Property Name="AgeCategory" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="MemberLength">
           <Key>
@@ -509,6 +513,8 @@
           <ScalarProperty Name="GamePoints" ColumnName="GamePoints" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="AgeCategory" ColumnName="AgeCategory" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
