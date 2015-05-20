@@ -115,6 +115,7 @@ namespace WebServiceSmartKitchen.Controllers
                                                                        select search;
                 if (!productFridgeSearchExist.Any())
                 {
+                    return NotFound();
                 }
 
                 
@@ -130,6 +131,7 @@ namespace WebServiceSmartKitchen.Controllers
                                                                        select search;
                 if (!productFridgeSearchExist.Any())
                 {
+                    return NotFound();
                 }
 
                 productEdit = productFridgeSearchExist.FirstOrDefault();
@@ -153,6 +155,7 @@ namespace WebServiceSmartKitchen.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
+                return Conflict();
             }
 
             return Ok(toHardware);
