@@ -103,30 +103,56 @@ namespace WebServiceSmartKitchen.Controllers
             {
                 return BadRequest(ModelState);
             }
-            IEnumerable<ProductsFridge> productFridgeSearchExist = from search in db.ProductsFridgeSet
-                                                     where search.IdNFC == product.IdNFC
-                                                     select search;
-            if (!productFridgeSearchExist.Any())
-            {
-                return Conflict();
-            }
+
+            IEnumerable<ProductsFridge> productFridgeSearchExist = null;
             HardwareReturn toHardware = new HardwareReturn();
             ProductsFridge productEdit = new ProductsFridge();
-            productEdit = productFridgeSearchExist.FirstOrDefault();
-            productEdit.Address = product.Address;
-            productEdit.Available = product.Available;
+
+            if (!String.IsNullOrEmpty(product.IdNFC) && product.IdNFC != "0000")
+            {
+                productFridgeSearchExist = from search in db.ProductsFridgeSet
+                                                                       where search.IdNFC == product.IdNFC
+                                                                       select search;
+                if (!productFridgeSearchExist.Any())
+                {
+                }
+
+                
+                productEdit = productFridgeSearchExist.FirstOrDefault();
+                productEdit.Address = product.Address;
+                productEdit.Available = product.Available;
+
+            }
+            else if (!String.IsNullOrEmpty(product.Address))
+            {
+                productFridgeSearchExist = from search in db.ProductsFridgeSet
+                                                                       where search.Address == product.Address
+                                                                       select search;
+                if (!productFridgeSearchExist.Any())
+                {
+                }
+
+                productEdit = productFridgeSearchExist.FirstOrDefault();
+                productEdit.Address = "";
+                productEdit.Available = "0";
+                
+            }
+            else
+            {
+                return NotFound();
+            }
+
             productEdit.Kitchen.TemperatureFridge = product.TemperatureFridge;
             toHardware.Calories = productEdit.Calories;
 
             db.Entry(productEdit).State = System.Data.Entity.EntityState.Modified;
-
+            
             try
             {
                 await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                   return NotFound();
             }
 
             return Ok(toHardware);
@@ -152,7 +178,7 @@ namespace WebServiceSmartKitchen.Controllers
             await db.SaveChangesAsync();
 
             return Ok(kitchen);
-            
+
             //return CreatedAtRoute("DefaultApi", new { id = productsFridge.Id }, productsFridge);
         }
 
